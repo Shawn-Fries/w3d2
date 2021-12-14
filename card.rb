@@ -2,7 +2,8 @@ require_relative './board.rb'
 require_relative './game.rb'
 
 class Card
-    
+    attr_accessor :value
+
     def initialize
         @value = nil
         @face_down = true
