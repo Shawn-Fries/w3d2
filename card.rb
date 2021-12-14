@@ -1,5 +1,6 @@
 require_relative './board.rb'
 require_relative './game.rb'
+require_relative "./human_player.rb"
 
 class Card
     attr_accessor :value, :face_down

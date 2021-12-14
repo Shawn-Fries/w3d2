@@ -1,5 +1,6 @@
 require_relative './card.rb'
 require_relative './game.rb'
+require_relative "./human_player.rb"
 
 class Board
     attr_accessor :grid
