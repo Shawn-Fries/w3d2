@@ -2,6 +2,7 @@ require_relative './board.rb'
 require_relative './game.rb'
 
 class Card
+    
     def initialize
         @value = nil
         @face_down = true
@@ -22,6 +23,7 @@ class Card
     def ==(card)
         @value == card.value
     end
+
 
 
 end
