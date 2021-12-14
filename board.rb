@@ -2,6 +2,7 @@ require_relative './card.rb'
 require_relative './game.rb'
 
 class Board
+    attr_accessor :grid
     def initialize
         @grid = Array.new(4) {Array.new(4) {Card.new}}
     end
@@ -46,5 +47,7 @@ class Board
         @grid[pos.first][pos.last].value
     end
 
-
+    def [](pos)
+        @grid[pos.first][pos.last]
+    end
 end
