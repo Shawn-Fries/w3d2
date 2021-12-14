@@ -15,20 +15,24 @@ class Game
     def play
         previous_guess = []
         until @board.won?
-      
             @board.render
             pos = @current_player.prompt
             previous_guess << pos
+            value = @board[previous_guess.last].value
+            latest_guess = previous_guess.last 
+
+            @computer_player.receive_revealed_card(latest_guess, value )
             if previous_guess.length > 1
-                if @board[previous_guess[0]] == @board[previous_guess[1]]
-                    @board[previous_guess[1]].reveal
+                if @board[previous_guess[0]] == @board[latest_guess]
+                    @board[latest_guess].reveal
                      puts "Match Found!"
+                     @computer_player.receive_match(@board[latest_guess].value)
                      sleep(1)             
                 else
-                  @board[previous_guess[1]].reveal
+                  @board[latest_guess].reveal
                   @board.render
                   sleep(1)           
-                  @board[previous_guess[1]].hide
+                  @board[latest_guess].hide
                   @board[previous_guess[0]].hide
                   self.switch_turn!
                end
