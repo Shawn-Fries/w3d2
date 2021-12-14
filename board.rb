@@ -5,6 +5,7 @@ class Board
     attr_accessor :grid
     def initialize
         @grid = Array.new(4) {Array.new(4) {Card.new}}
+
     end
 
     def num_pairs
@@ -32,10 +33,19 @@ class Board
     def render
         @grid.each do |outer|
             outer.each do |inner|
-                print inner.value if !inner.face_down 
+                if !inner.face_down 
+                    print "#{inner.value} " 
+                else
+                    print " "
+                end
             end
             puts ""
         end 
+        # @grid.map do |outter|
+        #     outter.map do |inner|
+        #         inner.value.join(" ") if !inner.face_down
+        #     end
+        # end 
     end
 
     def won?

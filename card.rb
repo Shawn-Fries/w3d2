@@ -4,7 +4,7 @@ require_relative './game.rb'
 class Card
     attr_accessor :value, :face_down
     def initialize
-        @value = nil
+        @value = " "
         @face_down = true
     end
 
