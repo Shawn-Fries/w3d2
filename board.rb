@@ -28,7 +28,23 @@ class Board
         end
     end
 
-    def letter(possible_letters)
-        possible_letters.sample
+    def render
+        @grid.each do |outer|
+            outer.each do |inner|
+                print inner.value if !inner.face_down 
+            end
+            puts ""
+        end 
     end
+
+    def won?
+        @grid.all? {|row| row.all? {|card| !card.face_down}}
+    end
+
+    def reveal(pos)  #[1,1]
+        @grid[pos.first][pos.last].reveal
+        @grid[pos.first][pos.last].value
+    end
+
+
 end
