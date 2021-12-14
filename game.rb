@@ -14,14 +14,15 @@ class Game
 
     def play
         previous_guess = []
+        is_even_turn = true
         until @board.won?
             @board.render
-            pos = @current_player.prompt
+            pos = @current_player.prompt(is_even_turn)
             previous_guess << pos
             value = @board[previous_guess.last].value
             latest_guess = previous_guess.last 
 
-            @computer_player.receive_revealed_card(latest_guess, value )
+            @computer_player.receive_revealed_card(latest_guess, value)
             if previous_guess.length > 1
                 if @board[previous_guess[0]] == @board[latest_guess]
                     @board[latest_guess].reveal
@@ -42,6 +43,7 @@ class Game
             end
             
           system('clear')
+          is_even_turn = !is_even_turn
         end
     end
 
